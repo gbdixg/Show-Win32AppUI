@@ -1,0 +1,83 @@
+Function Add-Win32AppAssignment{
+Param(
+    [Parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string]$AppilcationID
+    ,
+    [parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string]$GroupID
+    ,
+    [parameter(Mandatory = $true)]
+    [ValidateNotNullOrEmpty()]
+    [string]$Intent 
+)
+BEGIN{
+# Ensure required authentication header variable exists
+    if ($Global:AuthenticationHeader -eq $null) {
+        Write-Warning -Message "Authentication token was not found, use Connect-MSIntuneGraph before using this function"; break
+        return
+    }
+    else {
+        $TokenLifeTime = ($Global:AuthenticationHeader.ExpiresOn - (Get-Date).ToUniversalTime()).TotalMinutes
+        if ($TokenLifeTime -le 0) {
+            Write-Warning -Message "Existing token found but has expired, use Connect-MSIntuneGraph to request a new authentication token"; break
+            return
+        }
+        else {
+            Write-Verbose -Message "Current authentication token expires in (minutes): $($TokenLifeTime)"
+        }
+    }
+}
+PROCESS{
+
+    Write-Verbose -Message "Querying for Win32 app using ID: $($AppilcationID)"
+
+    # Checking if the app exists
+
+    $URI   = "https://graph.microsoft.com/Beta/deviceAppManagement/mobileApps/$($AppilcationID)"
+    $Win32App = Invoke-RestMethod -Uri $URI -Headers $Global:AuthenticationHeader -Method GET -ErrorAction Stop -Verbose:$false
+
+    # If the app exists...
+    if ($Win32App -ne $null) {
+        $Win32AppID = $AppilcationID
+        
+        # Construct target assignment body
+        $DataType = "#microsoft.graph.exclusionGroupAssignmentTarget"
+        $TargetAssignment = @{
+            "@odata.type" = $DataType
+            "deviceAndAppManagementAssignmentFilterId" = $null
+            "deviceAndAppManagementAssignmentFilterType" = "none"
+            "groupId" = $GroupID
+        }
+
+        # Construct table for Win32 app assignment body
+        $Win32AppAssignmentBody = [ordered]@{
+            "@odata.type" = "#microsoft.graph.mobileAppAssignment"
+            "intent" = $intent
+            "source" = "direct"
+            "target" = $TargetAssignment
+            "settings" = $null
+        }
+            
+        # $Win32AppAssignmentBody.Add("settings", $null)
+        
+        try {
+            $GraphURI = "https://graph.microsoft.com/Beta/deviceAppManagement/mobileApps/$($Win32AppID)/assignments"
+
+            $Result = Invoke-RestMethod -Uri $GraphURI -Headers $Global:AuthenticationHeader -Method POST -Body ($Win32AppAssignmentBody | ConvertTo-Json) -ContentType "application/json" -ErrorAction Stop -Verbose
+                                
+            if ($Result.id) {
+                Write-Verbose -Message "Successfully created Win32 app assignment with ID: $($Result.id)"
+                Write-Output -InputObject $Result
+            }
+        }catch [System.Exception] {
+            Write-Warning -Message "An error occurred while creating a Win32 app assignment. Error message: $($_.Exception.Message)"
+        }
+
+    }
+    else {
+        Write-Warning -Message "No apps with ID '$($AppilcationID)' was found"
+    }
+}
+}

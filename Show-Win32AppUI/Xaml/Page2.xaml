@@ -1,0 +1,179 @@
+<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="Transparent"
+      x:Name="Page2_Control">
+      <Page.Resources>
+                <ResourceDictionary Source="Styles.xaml"/>
+        
+        </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+             <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+              <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <GroupBox 
+            Header="Intune App Display Name"
+            FontFamily="Segoe UI"
+            FontSize="16"
+            Foreground="DarkGray"
+            Grid.Row="1"
+            Width="380"
+            BorderThickness="3"
+            HorizontalContentAlignment="Center"
+            Margin="0,0,10,0">
+        
+        <StackPanel>
+        <TextBox x:Name="txt_DisplayName"
+            Width="350"
+            Grid.Column="0"
+            HorizontalAlignment="Left"
+            Margin="5,10,0,10"
+            Style="{StaticResource ModernTextBox}"
+            IsReadOnly="True"
+            />
+         </StackPanel>
+        </GroupBox>
+
+        <TextBox x:Name="txt_PubName"
+                 Width="350"
+                 Grid.Column="0"
+                 Grid.Row="2"
+                 HorizontalAlignment="Left"
+                 Margin="0,0,0,0"
+                 Style="{StaticResource ModernTextBox}"
+                 Foreground="black"/>
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="3"
+                 Text="Enter the publisher name"
+                 Margin="10,0,0,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+        <TextBox x:Name="txt_AppName"
+                 Width="350"
+                 Grid.Column="0"
+                 Grid.Row="4"
+                 HorizontalAlignment="Left"
+                 Margin="0,10,0,0"
+                 Style="{StaticResource ModernTextBox}"
+                 Foreground="black"/>
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="5"
+                 Text="Enter the application name"
+                 Margin="10,0,0,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+        <TextBox x:Name="txt_Version"
+                 Width="350"
+                 Grid.Column="0"
+                 Grid.Row="6"
+                 HorizontalAlignment="Left"
+                 Margin="0,10,0,0"
+                 Style="{StaticResource ModernTextBox}"
+                 Foreground="black"/>
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="7"
+                 Text="Enter the application version"
+                 Margin="10,0,0,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+        <TextBox x:Name="txt_PkgNum"
+                 Width="350"
+                 Grid.Column="0"
+                 Grid.Row="8"
+                 HorizontalAlignment="Left"
+                 Margin="0,10,0,0"
+                 Style="{StaticResource ModernTextBox}"
+                 Foreground="black"/>
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="9"
+                 Text="Enter the package number"
+                 Margin="10,0,0,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+
+        <TextBox x:Name="txt_Description"
+                 Width="350"
+                 Grid.Column="0"
+                 Grid.Row="10"
+                 HorizontalAlignment="Left"
+                 Margin="0,10,0,0"
+                 Style="{StaticResource ModernTextBox}"
+                 Foreground="black"/>
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="11"
+                 Text="Enter a package description"
+                 Margin="10,0,0,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="12"
+                 Text="Language"
+                 Margin="15,30,0,0"
+                 HorizontalAlignment="Left"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+        <ComboBox x:Name="combo_language"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                 Grid.Row="12"
+                 HorizontalAlignment="Right"
+                 Width="200"
+                 Height="24"
+                 Margin="0,30,0,0"
+                 MaxDropDownHeight="200"/>
+                 
+
+        <TextBlock Grid.Column="0"
+                 Grid.Row="13"
+                 Text="Software Bitness - x86 or x64"
+                 Margin="15,25,0,0"
+                 Style="{StaticResource ModernTextBlock}"/>
+
+
+        <ComboBox x:Name="combo_Architecture"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="3"
+                 Grid.Row="13"
+                 HorizontalAlignment="Right"
+                 Width="48"
+                 Height="24"
+                 Margin="0,25,0,0"
+                
+                />
+
+        
+
+
+    </Grid>
+</Page>

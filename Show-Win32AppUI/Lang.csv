@@ -1,0 +1,126 @@
+displayName,Code
+af : Afrikaans,af
+sq : Albanian,sq
+ar-dz : Arabic (Algeria),ar-dz
+ar-bh : Arabic (Bahrain),ar-bh
+ar-eg : Arabic (Egypt),ar-eg
+ar-iq : Arabic (Iraq),ar-iq
+ar-jo : Arabic (Jordan),ar-jo
+ar-kw : Arabic (Kuwait),ar-kw
+ar-lb : Arabic (Lebanon),ar-lb
+ar-ly : Arabic (Libya),ar-ly
+ar-ma : Arabic (Morocco),ar-ma
+ar-om : Arabic (Oman),ar-om
+ar-qa : Arabic (Qatar),ar-qa
+ar-sa : Arabic (Saudi Arabia),ar-sa
+ar-sy : Arabic (Syria),ar-sy
+ar-tn : Arabic (Tunisia),ar-tn
+ar-ae : Arabic (U.A.E.),ar-ae
+ar-ye : Arabic (Yemen),ar-ye
+eu : Basque,eu
+be : Belarusian,be
+bg : Bulgarian,bg
+ca : Catalan,ca
+zh-hk : Chinese (Hong Kong),zh-hk
+zh-cn : Chinese (PRC),zh-cn
+zh-sg : Chinese (Singapore),zh-sg
+zh-tw : Chinese (Taiwan),zh-tw
+hr : Croatian,hr
+cs : Czech,cs
+da : Danish,da
+nl-be : Dutch (Belgium),nl-be
+nl : Dutch (Standard),nl
+en : English,en
+en-au : English (Australia),en-au
+en-bz : English (Belize),en-bz
+en-ca : English (Canada),en-ca
+en-ie : English (Ireland),en-ie
+en-jm : English (Jamaica),en-jm
+en-nz : English (New Zealand),en-nz
+en-za : English (South Africa),en-za
+en-tt : English (Trinidad),en-tt
+en-gb : English (United Kingdom),en-gb
+en-us : English (United States),en-us
+et : Estonian,et
+fo : Faeroese,fo
+fa : Farsi,fa
+fi : Finnish,fi
+fr-be : French (Belgium),fr-be
+fr-ca : French (Canada),fr-ca
+fr-lu : French (Luxembourg),fr-lu
+fr : French (Standard),fr
+fr-ch : French (Switzerland),fr-ch
+gd : Gaelic (Scotland),gd
+de-at : German (Austria),de-at
+de-li : German (Liechtenstein),de-li
+de-lu : German (Luxembourg),de-lu
+de : German (Standard),de
+de-ch : German (Switzerland),de-ch
+el : Greek,el
+he : Hebrew,he
+hi : Hindi,hi
+hu : Hungarian,hu
+is : Icelandic,is
+id : Indonesian,id
+ga : Irish,ga
+it : Italian (Standard),it
+it-ch : Italian (Switzerland),it-ch
+ja : Japanese,ja
+ko : Korean,ko
+ko : Korean (Johab),ko
+ku : Kurdish,ku
+lv : Latvian,lv
+lt : Lithuanian,lt
+mk : Macedonian (FYROM),mk
+ml : Malayalam,ml
+ms : Malaysian,ms
+mt : Maltese,mt
+no : Norwegian,no
+nb : Norwegian (Bokmål),nb
+nn : Norwegian (Nynorsk),nn
+pl : Polish,pl
+pt-br : Portuguese (Brazil),pt-br
+pt : Portuguese (Portugal),pt
+pa : Punjabi,pa
+rm : Rhaeto-Romanic,rm
+ro : Romanian,ro
+ro-md : Romanian (Republic of Moldova),ro-md
+ru : Russian,ru
+ru-md : Russian (Republic of Moldova),ru-md
+sr : Serbian,sr
+sk : Slovak,sk
+sl : Slovenian,sl
+sb : Sorbian,sb
+es-ar : Spanish (Argentina),es-ar
+es-bo : Spanish (Bolivia),es-bo
+es-cl : Spanish (Chile),es-cl
+es-co : Spanish (Colombia),es-co
+es-cr : Spanish (Costa Rica),es-cr
+es-do : Spanish (Dominican Republic),es-do
+es-ec : Spanish (Ecuador),es-ec
+es-sv : Spanish (El Salvador),es-sv
+es-gt : Spanish (Guatemala),es-gt
+es-hn : Spanish (Honduras),es-hn
+es-mx : Spanish (Mexico),es-mx
+es-ni : Spanish (Nicaragua),es-ni
+es-pa : Spanish (Panama),es-pa
+es-py : Spanish (Paraguay),es-py
+es-pe : Spanish (Peru),es-pe
+es-pr : Spanish (Puerto Rico),es-pr
+es : Spanish (Spain),es
+es-uy : Spanish (Uruguay),es-uy
+es-ve : Spanish (Venezuela),es-ve
+sv : Swedish,sv
+sv-fi : Swedish (Finland),sv-fi
+th : Thai,th
+ts : Tsonga,ts
+tn : Tswana,tn
+tr : Turkish,tr
+ua : Ukrainian,ua
+ur : Urdu,ur
+ve : Venda,ve
+vi : Vietnamese,vi
+cy : Welsh,cy
+xh : Xhosa,xh
+ji : Yiddish,ji
+zu : Zulu,zu

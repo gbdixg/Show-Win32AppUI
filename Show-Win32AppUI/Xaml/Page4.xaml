@@ -1,0 +1,186 @@
+<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="Transparent"
+      x:Name="Page4_Control">
+      <Page.Resources>
+                <ResourceDictionary Source="Styles.xaml"/>
+        </Page.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox 
+            Header="Package"
+            FontFamily="Segoe UI"
+            FontSize="16"
+            Foreground="DarkGray"
+            Grid.Row="1"
+            BorderThickness="2">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="btn_WrapperFiles"
+                        Content="Create Wrapper Scripts"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="1"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                    
+                    <Button Name="btn_IntuneWin"
+                        Content="Create Intunewin Package"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="2"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox 
+            Header="Win32 App"
+            FontFamily="Segoe UI"
+            FontSize="16"
+            Foreground="DarkGray"
+            Grid.Row="2"
+            BorderThickness="2">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="btn_CreateGroups"
+                        Content="Create App Groups"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="1"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                    
+                    <Button Name="btn_CreateWin32App"
+                        Content="Create Win32 App"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="2"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox 
+            Header="Installation"
+            FontFamily="Segoe UI"
+            FontSize="16"
+            Foreground="DarkGray"
+            Grid.Row="3"
+            BorderThickness="2">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="btn_Dependency"
+                        Content="Configure Dependency"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="1"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                    
+                    <Button Name="btn_Supercedence"
+                        Content="Configure Supercedence"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="2"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox 
+            Header="Deployment"
+            FontFamily="Segoe UI"
+            FontSize="16"
+            Foreground="DarkGray"
+            Grid.Row="4"
+            BorderThickness="2">
+            <StackPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="btn_Assignment"
+                        Content="Configure Assignment"
+                        Height="30"
+                        Width="250"
+                        Grid.Row="1"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        BorderThickness="0"
+                        Margin="0,5,0,0">
+                    </Button>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Page>
