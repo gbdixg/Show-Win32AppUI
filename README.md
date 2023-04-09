@@ -87,7 +87,7 @@ To show debug information in the console add the *WriteHost* switch:
 ```
 # More information
 
-See this [Blog post](http://localhost) and linked articles for more information  
+See this [Blog post](https://write-verbose.com/2023/03/18/Show-Win32AppUI/) and linked articles for more information  
 <br>
 
 # Credits
