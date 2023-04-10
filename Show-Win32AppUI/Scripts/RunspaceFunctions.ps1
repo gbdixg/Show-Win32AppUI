@@ -26,7 +26,7 @@ Function New-AppGroups{
         # Required, Available, Uninstall groups
         Foreach($AppGroupType in $AppGroups.keys){
             Write-TxtLog "Processing $AppGroupType group '$($AppGroups[$AppGroupType])'..." -indent 1
-        
+
             $Description = switch($AppGroupType){
                 'Required'{
                     "Required install of $Publisher $AppName $Version"
@@ -93,7 +93,7 @@ Function New-AppGroups{
         'Available' = "$($Script:GroupAvailable)"
         'Uninstall' = "$($Script:GroupUninstall)"
     }
-    
+
     $varsToImport = @{
         AuthenticationHeader=$Global:AuthenticationHeader
         UIControls=$Script:UIControls
@@ -121,7 +121,7 @@ Function New-IntuneWin{
     $sb_IntuneWin={
         $Script:logFile = $logfile
         $Script:WriteHost = $WriteHost
-        
+
         Write-TxtLog "Creating Win32 intunewin package..."
         Write-TxtLog "SourceFolder = $SourceFolder" -indent 1
         Write-TxtLog "SetupFile = $SetupFile" -indent 1
@@ -179,13 +179,13 @@ Function New-IntuneWin{
         $UIControls.MainWindow.Dispatcher.Invoke([action]{
             $UIControls.MainWindow.Cursor = $CurrentCursor
         })
-        
+
         # Status bar
         $UIControls.txt_Status.Dispatcher.invoke([action]{
             $UIControls.txt_Status.Text=$Message
         },
         "Normal")
-        
+
         # Enable Create Assignment groups button
         $UIControls.btn_CreateWin32App.Dispatcher.invoke([action]{
             $UIControls.btn_CreateGroups.IsEnabled = $True
@@ -246,7 +246,7 @@ Function Update-WrapperScripts{
         }
 
         Write-TxtLog "Setup type = '$SetupType'"
-        
+
         Foreach($file in @("install.ps1","uninstall.ps1")){
             Write-TxtLog "Processing file '$File'"
 
@@ -258,10 +258,10 @@ Function Update-WrapperScripts{
                     $Tokens['%SetupArgs%'] = "/i $SetupFile $($Tokens['%SetupArgs%'])"
                 }
             }elseif($SetupType -eq 'PS1'){
-                
+
                 # Don't need to use Sysnative because this setup script will be called from 64-bit powershell installer
                 $Tokens['%SetupFile%'] = '%Windir%\system32\windowspowershell\v1.0\powershell.exe'
-                
+
                 if($file -eq 'install.ps1'){
                     $Tokens['%SetupArgs%'] = "-noprofile -executionpolicy bypass -file $SetupFile"
                 }else{
@@ -287,11 +287,11 @@ Function Update-WrapperScripts{
 
                 Write-TxtLog "Writing updated '$file' to folder '$SourceFolder'" -indent 2
                 Get-Content -Path "$ScriptFolder\WrapperTemplates\$SetupType\$($file)" -PipelineVariable 'pv' | ForEach-Object{
-                    
+
                     Foreach($TokenKey in $Tokens.keys){
                         $PV = $PV.Replace($TokenKey,$Tokens[$TokenKey])
                     }
-                    
+
                     $PV | Add-Content -Path "$SourceFolder\$file"
                 }
                 Write-TxtLog "Completed" -indent 2
@@ -305,13 +305,13 @@ Function Update-WrapperScripts{
         $UIControls.MainWindow.Dispatcher.Invoke([action]{
             $UIControls.MainWindow.Cursor = $CurrentCursor
         })
-        
+
         # Status bar
         $UIControls.txt_Status.Dispatcher.invoke([action]{
             $UIControls.txt_Status.Text="Wrapper scripts completed."
         },
         "Normal")
-        
+
         # Enable Create package button
         $UIControls.btn_IntuneWin.Dispatcher.invoke([action]{
             $UIControls.btn_IntuneWin.IsEnabled = $True
@@ -429,7 +429,7 @@ Function New-Win32App{
             $UIControls.txt_Status.Text="Creating Win32App - may take some time.."
         },
         "Normal")
-        
+
         $Result = Add-IntuneWin32App @AppSplat
 
         if($Result.'@odata.type' -eq '#microsoft.graph.win32LobApp'){
@@ -464,7 +464,7 @@ Function New-Win32App{
             $UIControls.btn_Dependency.Dispatcher.Invoke([action]{
                 $UIControls.btn_Dependency.IsEnabled=$True
             },"Normal")
-        
+
         }elseif($SelectedSupercedence -ne 'None' -and ($null -ne $SelectedSupercedence)){
 
             $UIControls.btn_Supercedence.Dispatcher.Invoke([action]{
@@ -477,7 +477,7 @@ Function New-Win32App{
                 $UIControls.btn_Assignment.IsEnabled=$True
             },"Normal")
 
-        }          
+        }
 
     }#sb
 
@@ -540,11 +540,11 @@ Function Get-Win32Apps{
             }catch{
                 Write-TxtLog "Failed '$_'" -indent 1 -severity ERROR
             }
-            
+
             # Update combo boxes
             $UIControls.combo_Dependency.Dispatcher.invoke([action]{
                 $Win32Apps.Clear()
-                
+
                 $UIControls.combo_Dependency.Items.Clear()
                 $UIControls.combo_Dependency.Items.Add("None") | Out-Null
                 $UIControls.combo_Dependency.SelectedItem="None"
@@ -560,7 +560,7 @@ Function Get-Win32Apps{
             "Normal")
 
             $UIControls.combo_Supercedence.Dispatcher.invoke([action]{
-                
+
                 $UIControls.combo_Supercedence.Items.Clear()
                 $UIControls.combo_Supercedence.Items.Add("None") | Out-Null
                 $UIControls.combo_Supercedence.SelectedItem="None"
@@ -590,7 +590,7 @@ Function Get-Win32Apps{
 
     Write-TxtLog "Starting a new runspace 'GetWin32Apps'..."
     Invoke-Runspace -codeToRun $sb_GetAppsCode -varsToImport $varsToImport -modulesToLoad @('IntuneWin32App','MSAL.PS') -functionsToImport('Write-TxtLog','Get-IntuneWin32AppEx') -Name 'GetWin32Apps'
-              
+
 }
 
 Function Set-AssignmentGroups{
@@ -640,7 +640,7 @@ Function Set-AssignmentGroups{
                     }
 
                     Write-TxtLog "Adding required exclusion for uninstall group..." -indent 1
-                    $Result = Add-IntuneWin32AppAssignmentGroupEx -ID $AppID -GroupID $AssignmentGroups.Uninstall -Exclude -Intent required -Verbose
+                    $Result = Add-IntuneWin32AppAssignmentGroupEx -ID $AppID -GroupID $AssignmentGroups.Uninstall -Exclude -Intent available -Verbose
 
                     if($Result.target.'@odata.type' -eq '#microsoft.graph.exclusionGroupAssignmentTarget'){
                         Write-TxtLog "Success" -indent 2
@@ -652,7 +652,7 @@ Function Set-AssignmentGroups{
                 }
             }
 
-            Remove-Variable -Name "Result" -Force -ErrorAction SilentlyContinue 
+            Remove-Variable -Name "Result" -Force -ErrorAction SilentlyContinue
         }
 
         # Cursor
@@ -713,7 +713,7 @@ Function Add-Dependency{
         $UIControls.MainWindow.Dispatcher.Invoke([action]{
             $UIControls.MainWindow.Cursor = $CurrentCursor
         })
-        
+
         # Status bar
         $UIControls.txt_Status.Dispatcher.invoke([action]{
             $UIControls.txt_Status.Text="Dependency completed."
@@ -774,7 +774,7 @@ Function Add-Supercedence{
         $UIControls.MainWindow.Dispatcher.Invoke([action]{
             $UIControls.MainWindow.Cursor = $CurrentCursor
         })
-        
+
         # Status bar
         $UIControls.txt_Status.Dispatcher.invoke([action]{
             $UIControls.txt_Status.Text="Supercedence completed."
@@ -815,18 +815,18 @@ Function Find-Owner{
 
         Write-TxtLog "Looking-up users with UPN starting '$Lookup'"
         $OwnerResult = Find-AADUser -ANR $Lookup -verbose
-         
+
         if($OwnerResult.Count -gt 0){
             Write-TxtLog "Found $($OwnerResult.Count) users" -indent 1
             $UIControls.txt_Status.Dispatcher.invoke([action]{
                 $UIControls.list_OwnerLookup.items.clear()
-                foreach($o in $OwnerResult){                            
+                foreach($o in $OwnerResult){
                     $UIControls.list_OwnerLookup.items.add($o.userprincipalName)
-                }                    
+                }
             },"Normal")
         }else{
             Write-TxtLog "No users found" -indent 1
-        }      
+        }
     }#sb
 
     $varsToImport = @{
@@ -876,13 +876,13 @@ Function Invoke-Runspace{
         $Runspace.ThreadOptions = "ReuseThread"
         $Runspace.Name = $Name
         $Runspace.Open()
-        
+
         $PS = [powershell]::Create().AddScript($codeToRun)
 
         Foreach($var in $varsToImport.keys){
-            $Runspace.SessionStateProxy.SetVariable($var,$varsToImport[$var])                
+            $Runspace.SessionStateProxy.SetVariable($var,$varsToImport[$var])
         }
-    
+
         $PS.Runspace = $Runspace
         $handle = $PS.BeginInvoke()
 
